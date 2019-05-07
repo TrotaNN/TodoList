@@ -19,5 +19,3 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
-
-"""Aqui eu fiz uma alteração!
