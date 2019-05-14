@@ -33,3 +33,15 @@ def uncross(request, List_id):
     item.completed = False
     item.save()
     return redirect('index.html')
+def editar(request, List_id):
+    if request.method == 'POST':
+        item = List.objects.get(pk=List_id)
+
+        form = ListForm(request.POST or None, instance=item)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Tarefa editada com sucesso!')
+            return redirect('index.html')
+    else:
+        item = List.objects.get(pk=List_id)
+        return render(request, 'edit.html', {'item': item})
